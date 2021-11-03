@@ -1,10 +1,9 @@
 import 'braid-design-system/reset';
 
 import { BraidProvider } from 'braid-design-system';
+import { Text } from 'braid-design-system';
 import apac from 'braid-design-system/themes/apac';
 import React from 'react';
-
-import { NextSteps } from './NextSteps';
 
 interface AppProps {
   environment: 'development' | 'production';
@@ -12,6 +11,6 @@ interface AppProps {
 
 export default ({ environment }: AppProps) => (
   <BraidProvider theme={apac}>
-    <NextSteps environment={environment} />
+    <Text>Hello world!</Text>
   </BraidProvider>
 );

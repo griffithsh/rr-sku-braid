@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import type { Render } from 'sku';
 
-import App from './App/App';
 import { ClientContext } from './types';
 
 interface RenderContext {
@@ -10,23 +9,15 @@ interface RenderContext {
 }
 
 const skuRender: Render<RenderContext> = {
-  renderApp: ({ SkuProvider, environment }) => {
-    const appHtml = ReactDOM.renderToString(
-      <SkuProvider>
-        <App environment={environment as ClientContext['environment']} />
-      </SkuProvider>,
-    );
-
-    return {
-      appHtml,
-    };
-  },
+  renderApp: () => ({
+    appHtml: ReactDOM.renderToString(<></>),
+  }),
 
   provideClientContext: ({ environment }): ClientContext => ({
     environment,
   }),
 
-  renderDocument: ({ app, bodyTags, headTags }) => `
+  renderDocument: ({ bodyTags, headTags }) => `
     <!DOCTYPE html>
     <html>
       <head>
@@ -34,8 +25,8 @@ const skuRender: Render<RenderContext> = {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${headTags}
       </head>
-      <body>
-        <div id="app">${app.appHtml}</div>
+      <body onload="RRWidget(document.getElementById('root'))">
+        <div id="root"></div>
         ${bodyTags}
       </body>
     </html>
