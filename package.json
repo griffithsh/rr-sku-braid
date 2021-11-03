@@ -1,0 +1,29 @@
+{
+  "name": "rr-sku-braid",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "sku start",
+    "test": "sku test",
+    "build": "sku build",
+    "serve": "sku serve",
+    "lint": "sku lint",
+    "format": "sku format"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "sku pre-commit"
+    }
+  },
+  "dependencies": {
+    "braid-design-system": "30.5.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sku": "11.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
+    "husky": "^7.0.4"
+  }
+}
