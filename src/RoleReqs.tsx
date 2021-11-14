@@ -2,13 +2,13 @@ import 'braid-design-system/reset';
 
 import { BraidProvider } from 'braid-design-system';
 import { Text } from 'braid-design-system';
-import apac from 'braid-design-system/themes/apac';
-import React from 'react';
 import { BraidTheme } from 'braid-design-system/lib/themes/BraidTheme';
+import React from 'react';
+import { apac, wireframe } from 'braid-design-system/lib/themes';
 
-interface AppProps {
-  environment: 'development' | 'production';
+export interface RoleReqsOptions {
   theme: BraidTheme;
+  useApac: boolean;
 }
 
 /*
@@ -42,8 +42,12 @@ type BraidTheme = {
     treatTheme: string;
 }
  */
-export default ({ environment, theme }: AppProps) => (
-  <BraidProvider theme={theme}>
-    <Text>Hello world!</Text>
-  </BraidProvider>
-);
+export default ({ useApac }: RoleReqsOptions) => {
+  const theme = useApac ? apac : wireframe;
+
+  return (
+    <BraidProvider theme={theme}>
+      <Text>Hello world!</Text>
+    </BraidProvider>
+  );
+};

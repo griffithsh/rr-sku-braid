@@ -25,7 +25,7 @@ const skuRender: Render<RenderContext> = {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${headTags}
       </head>
-      <body onload="RRWidget(document.getElementById('root'))">
+      <body onload="RRWidget(document.getElementById('root'),{'useApac':true})">
         <div id="root"></div>
         ${bodyTags}
       </body>
